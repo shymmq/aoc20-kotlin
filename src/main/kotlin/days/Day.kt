@@ -1,12 +1,21 @@
 package days
 
-import util.InputReader
+import java.io.File
+import java.io.FileNotFoundException
+import java.lang.NullPointerException
 
-abstract class Day(dayNumber: Int) {
+abstract class Day(private val dayNumber: Int) {
 
-    // lazy delegate ensures the property gets computed only on first access
-    protected val inputList: List<String> by lazy { InputReader.getInputAsList(dayNumber) }
-    protected val inputString: String by lazy { InputReader.getInputAsString(dayNumber) }
+    fun getInput(sample: Boolean = false): List<String> {
+        val dir = if (sample) "samples" else "inputs"
+        val path = "$dir/day_$dayNumber.txt"
+        try {
+            val file = File(javaClass.classLoader.getResource(path)!!.toURI())
+            return file.readLines()
+        } catch (e: NullPointerException) {
+            throw FileNotFoundException("File $path doesn't exist")
+        }
+    }
 
     abstract fun partOne(): Any
 
