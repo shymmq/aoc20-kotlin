@@ -10,7 +10,7 @@ class Day2 : Day(2) {
 
     private val pattern = "([0-9]+)-([0-9]+) ([a-z]): ([a-z]+)".toRegex()
 
-    private val parsed = getInput().map { line ->
+    private val parsed = input.map { line ->
         val groups = pattern.find(line)!!.groupValues
         Line(groups[1].toInt(), groups[2].toInt(), groups[3][0], groups[4])
     }

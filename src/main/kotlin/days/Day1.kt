@@ -6,7 +6,7 @@ class Day1 : Day(1) {
 
     override fun partOne(): Int {
 
-        val nums = getInput().map(String::toInt).sorted()
+        val nums = input.map(String::toInt).sorted()
         val count = nums.count()
 
         for (i in 0..(count - 2)) {
@@ -24,7 +24,7 @@ class Day1 : Day(1) {
 
 
     override fun partTwo(): Any {
-        val nums = getInput().map(String::toInt).sorted()
+        val nums = input.map(String::toInt).sorted()
         val count = nums.count()
 
         for (i in 0..(count - 3)) {

@@ -6,7 +6,10 @@ import java.lang.NullPointerException
 
 abstract class Day(private val dayNumber: Int) {
 
-    fun getInput(sample: Boolean = false): List<String> {
+    protected val input by lazy { getInput(sample = false) }
+    protected val sampleInput by lazy { getInput(sample = true) }
+
+    private fun getInput(sample: Boolean = false): List<String> {
         val dir = if (sample) "samples" else "inputs"
         val path = "$dir/day_$dayNumber.txt"
         try {
